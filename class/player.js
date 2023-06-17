@@ -32,13 +32,16 @@ class Player {
     }
 
     takeItem(itemName) {
-
+        // Picks up an item from a room into the player's inventory
         // Fill this in
-
-    }
+        const item = this.currentRoom.getItemByName(itemName);
+        this.items.push(item);
+        }
 
     dropItem(itemName) {
-
+        const item = this.getItemByName(itemName);
+        this.currentRoom.items.push(item);
+        this.items = this.items.filter((item) => (item = item.name !== itemName))
         // Fill this in
     }
 
@@ -48,8 +51,8 @@ class Player {
     }
 
     getItemByName(name) {
-
-        // Fill this in
+        const playerItem = this.items.filter(item => name === item.name)[0];
+        return playerItem;
     }
 }
 
